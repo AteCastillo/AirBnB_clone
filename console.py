@@ -146,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
             """In case to not found the command this func is executed"""
             functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
             functions_parameters = {"show": HBNBCommand.do_show, "destroy":
-                                    BNBCommand.do_show}
+                                    HBNBCommand.do_show}
             try:
                 args = line.split(".")
                 name_func = ""
