@@ -4,5 +4,11 @@
     "created_at": "2021-02-16T14:57:31.502654",
     "updated_at": "2021-02-16T14:57:31.503159",
     "__class__": "BaseModel"
+  },
+  "BaseModel.d63fdeb7-d289-4aff-872c-9d430ad9c54a": {
+    "id": "d63fdeb7-d289-4aff-872c-9d430ad9c54a",
+    "created_at": "2021-02-17T16:09:52.220025",
+    "updated_at": "2021-02-17T16:09:52.220080",
+    "__class__": "BaseModel"
   }
 }
