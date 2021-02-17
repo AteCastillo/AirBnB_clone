@@ -1,42 +1,39 @@
 #!/usr/bin/python3
-"""Tests File"""
+"""
+Test State
+"""
 import unittest
-from models.state import State
-from models.base_model import BaseModel
 import pep8
+from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.state import State
+from models.review import Review
+from models.user import User
 
 
-class TestState(unittest.TestCase):
-    """Test of State class"""
+class Teststate(unittest.TestCase):
+    def test_pep8_conformance_state(self):
+        """
+        Test that we conform to PEP8.
+        """
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/state.py'])
+        self.assertEqual(result.total_errors, 0, "Found style errors")
 
-    def test_State(self):
-        """Test instance of amenity class"""
-        new = State()
-        new2 = State()
-        self.assertIsInstance(new, BaseModel)
-        self.assertEqual(issubclass(new.__class__, BaseModel), True)
-        self.assertIs(type(new), State)
-        self.assertTrue(hasattr(new, "id"))
-        self.assertNotEqual(new, new2)
-        self.assertNotEqual(new.id, new2.id)
-        self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                        (new.__class__.__name__,
-                                         new.id, new.__dict__))
-        self.assertEqual(type(new.id), str)
+    def test_class(self):
+        state1 = State()
+        self.assertEqual(state1.__class__.__name__, "State")
 
-    def test_attr(self):
-        """Test attributes of the instance"""
-        new = State()
-        self.assertTrue(hasattr(new, "id"))
-        self.assertTrue(hasattr(new, "created_at"))
-        self.assertTrue(hasattr(new, "updated_at"))
-        self.assertTrue(hasattr(new, "name"))
-        self.assertFalse(hasattr(new, "state_id"))
-        self.assertEqual(type(new.name), str)
-        self.assertNotEqual(type(new.name), int)
-        self.assertNotEqual(type(new.name), list)
+    def test_father(self):
+        state1 = State()
+        self.assertEqual(state1.__class__.__name__, "State")
 
-    def test_documentation(self):
-        """Check documentation"""
-        self.assertIsNotNone(State.__doc__)
-        self.assertIsNotNone(State.__init__.__doc__)
+    def test_state(self):
+        """
+        Test attributes of Class State
+        """
+        my_state = State()
+        my_state.name = "Antioquia"
+        self.assertEqual(my_state.name, 'Antioquia')

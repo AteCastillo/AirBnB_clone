@@ -1,49 +1,26 @@
 #!/usr/bin/python3
-"""Tests File"""
+"""Test Review"""
 import unittest
-from models.review import Review
-from models.base_model import BaseModel
 import pep8
+from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.state import State
+from models.review import Review
 
 
-class TestReview(unittest.TestCase):
-    """Test of Review class"""
+class Testpep8(unittest.TestCase):
+    def test_pep8_conformance_review(self):
+        """Test that we conform to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/review.py'])
+        self.assertEqual(result.total_errors, 0, "Found style errors")
 
-    def test_Review(self):
-        """Test instance of amenity class"""
-        new = Review()
-        new2 = Review()
-        self.assertIsInstance(new, BaseModel)
-        self.assertEqual(issubclass(new.__class__, BaseModel), True)
-        self.assertIs(type(new), Review)
-        self.assertTrue(hasattr(new, "id"))
-        self.assertNotEqual(new, new2)
-        self.assertNotEqual(new.id, new2.id)
-        self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                        (new.__class__.__name__,
-                                         new.id, new.__dict__))
-        self.assertEqual(type(new.id), str)
+    def test_class(self):
+        rev1 = Review()
+        self.assertEqual(rev1.__class__.__name__, "Review")
 
-    def test_attr(self):
-        """Test attributes of the instance"""
-        new = Review()
-        self.assertTrue(hasattr(new, "id"))
-        self.assertTrue(hasattr(new, "created_at"))
-        self.assertTrue(hasattr(new, "updated_at"))
-        self.assertTrue(hasattr(new, "place_id"))
-        self.assertTrue(hasattr(new, "user_id"))
-        self.assertTrue(hasattr(new, "text"))
-        self.assertNotEqual(type(new.place_id), int)
-        self.assertNotEqual(type(new.place_id), list)
-        self.assertEqual(type(new.place_id), str)
-        self.assertNotEqual(type(new.user_id), list)
-        self.assertNotEqual(type(new.user_id), int)
-        self.assertEqual(type(new.user_id), str)
-        self.assertNotEqual(type(new.text), list)
-        self.assertNotEqual(type(new.text), int)
-        self.assertEqual(type(new.text), str)
-
-    def test_documentation(self):
-        """Check documentation"""
-        self.assertIsNotNone(Review.__doc__)
-        self.assertIsNotNone(Review.__init__.__doc__)
+    def test_father(self):
+        rev1 = Review()
+        self.assertTrue(issubclass(rev1.__class__, BaseModel))

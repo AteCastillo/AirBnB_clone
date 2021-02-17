@@ -1,38 +1,47 @@
 #!/usr/bin/python3
-"""Tests File"""
+"""
+Test Amenity
+"""
 import unittest
-from models.amenity import Amenity
-from models.base_model import BaseModel
 import pep8
+from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.state import State
+from models.review import Review
 
 
-class TestAmenity(unittest.TestCase):
-    """Test of Amenity class"""
+class Testamenity(unittest.TestCase):
+    """
+    test for amenity
+    """
+    def test_pep8_conformance_amenity(self):
+        """
+        Test that we conform to PEP8
+        """
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/amenity.py'])
+        self.assertEqual(result.total_errors, 0, "Found style errors")
 
-    def test_Amenity(self):
-        """Test instance of amenity class"""
-        new = Amenity()
-        new2 = Amenity()
-        strmethod = "[{}] ({}) {}".format(new.__class__.__name__,
-                                          new.id, new.__dict__)
-        self.assertIsInstance(new, BaseModel)
-        self.assertNotEqual(new, new2)
-        self.assertNotEqual(new.id, new2.id)
-        self.assertEqual(issubclass(new.__class__, BaseModel), True)
-        self.assertIs(type(new), Amenity)
-        self.assertTrue(hasattr(new, "id"))
-        self.assertEqual(new.__str__(), strmethod)
-        self.assertEqual(type(new.id), str)
+    def test_class(self):
+        """
+        Test attributes of Class Amenity
+        """
+        amenity1 = Amenity()
+        self.assertEqual(amenity1.__class__.__name__, "Amenity")
 
-    def test_attr(self):
-        """Test attributes of the class"""
-        new = Amenity()
-        self.assertTrue(hasattr(new, "id"))
-        self.assertTrue(hasattr(new, "created_at"))
-        self.assertTrue(hasattr(new, "updated_at"))
-        self.assertTrue(hasattr(new, "name"))
+    def test_father(self):
+        """
+        Test attributes of Class Amenity
+        """
+        amenity1 = Amenity()
+        self.assertTrue(issubclass(amenity1.__class__, BaseModel))
 
-    def test_documentation(self):
-        """Check documentation"""
-        self.assertIsNotNone(Amenity.__doc__)
-        self.assertIsNotNone(Amenity.__init__.__doc__)
+    def test_amenity(self):
+        """
+        Test attributes of Class Amenity
+        """
+        my_amenity = Amenity()
+        my_amenity.name = "Wi-Fi"
+        self.assertEqual(my_amenity.name, 'Wi-Fi')
