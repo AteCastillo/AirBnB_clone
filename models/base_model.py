@@ -13,7 +13,7 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """Initialization function"""
-        time_format = "%Y-%m-%dT%H:%M:%S.%f" #format received
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"  # format received
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -21,7 +21,7 @@ class BaseModel():
                 if key == "created_at" or key == "updated_at":
                     # to transform from string to datetime
                     current = datetime.strptime(value, time_format)
-                    # takes an attribute of a class and assign a value "current"
+            # takes an attribute of a class and assign a value "current"
                     setattr(self, key, current)
                 else:
                     setattr(self, key, value)
