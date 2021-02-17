@@ -130,6 +130,36 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
         else:
             print("** class name missing **")
+    
+    def count(self, line):
+        """Return the amount of instances of the class"""
+        count = 0
+        objs = storage.all()
+        if line in HBNBCommand.class_list:
+            for class_key in objs:
+                if line in class_key:
+                    count += 1
+            print(count)
+
+    def default(self, line):
+        """In case to not found the command this func is executed"""
+        functions = {"all()": HBNBCommand.do_all, "count()": HBNBCommand.count}
+        try:
+            args = line.split(".")
+            func = ""
+            func_id = ""
+            # enumarate checks every letter
+            for index, letter in enumerate(args[1]):
+                if letter == "(":
+                    func = args[1][0:index] + "()"
+                    func_id = args[1][index + 2: -2]
+                    break
+            if func in functions:
+                functions[func](self, args[0])
+            else:
+                print("*** Unknown syntax: {}".format(line))
+        except:
+            print("*** Unknown syntax: {}".format(line))
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
