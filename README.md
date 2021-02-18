@@ -16,12 +16,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 
 ### To start:
 * Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
-<<<<<<< HEAD
 * Non-interactive mode, `$ echo "help" | ./console.py`
-=======
-*Non-interactive mode, `$ echo "help" | ./console.py`
-
->>>>>>> 72adce38bd01794106b75a206368baf4f329af55
 ### To close:
 * Type either `EOF` or `quit`
 
@@ -44,11 +39,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 * `update`
   * Usage: `update User 1234-5678-9101 email 2109@holbertonschool.com`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
-<<<<<<< HEAD
 ## Handle Errors in the Console
-=======
-
->>>>>>> 72adce38bd01794106b75a206368baf4f329af55
 ### Files
 
 ### [Console](./console.py)
@@ -112,7 +103,6 @@ Module for serializing and deserializing instances and JSON
   * `def reload(self)` : method to deserialize the JSON to __objects
 
 ## Test Files : Unit Tests for respectively named files
-<<<<<<< HEAD
 Unittests for the HolbertonBnB project are defined in the [tests](./tests) 
 folder. To run the entire test suite simultaneously, execute the following command:
 
@@ -133,18 +123,6 @@ $ python3 unittest -m tests/test_console.py
 ### `test_review.py`
 ### `test_state.py`
 ### `test_user.py`
-=======
-
-### [Test Amenity](./tests/models/test_amenity.py)
-### [Test Base Model](./tests/models/test_base_model.py)
-### [Test City](./tests/models/test_city.py)
-### [Test Init](./tests/models/test__init__.py)
-### [Test Place](./tests/models/test_place.py)
-### [Test Review](./tests/models/test_review.py)
-### [Test State](./tests/models/test_state.py)
-### [Test User](./tests/models/test_user.py)
-
->>>>>>> 72adce38bd01794106b75a206368baf4f329af55
 ## Authors
 * Atenea Castillo, <a href='https://github.com/AteCastillo'>Github</a>
 * Gianluca Dorelo, <a href='https://github.com/gdorelo'>Github</a>
