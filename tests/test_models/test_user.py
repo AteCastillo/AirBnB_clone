@@ -37,7 +37,7 @@ class TestUser(unittest.TestCase):
     def test_User_init(self):
         """Test Init with Kwargs"""
         new = User(id="123", created_at="2021-02-17T22:46:38.883036",
-                        updated_at="2021-02-17T22:46:38.883036")
+                   updated_at="2021-02-17T22:46:38.883036")
         new2 = User(name="Matias tu papi")
         self.assertFalse(hasattr(new2, "id"))
         self.assertFalse(hasattr(new2, "created_at"))
@@ -50,7 +50,6 @@ class TestUser(unittest.TestCase):
         self.assertEqual(type(new3).__name__, "User")
         self.assertFalse(hasattr(new3, "1234"))
 
-    
     def test_attr(self):
         """Test attributes"""
         new = User()

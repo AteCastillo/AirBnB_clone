@@ -30,14 +30,14 @@ class TestPlace(unittest.TestCase):
     def test_Place_init(self):
         """Test Init with Kwargs"""
         new = Place(id="123", created_at="2021-02-17T22:46:38.883036",
-                        updated_at="2021-02-17T22:46:38.883036")
+                    updated_at="2021-02-17T22:46:38.883036")
         new2 = Place(id="123", name="Matias tu papi")
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
         with self.assertRaises(TypeError):
             Place(id=None, created_at=None, updated_at=None)
-    
+
     def test_public_attr(self):
         """Test if the attributes are publics"""
         self.assertEqual(str, type(Place().id))
@@ -113,6 +113,7 @@ class TestPlace(unittest.TestCase):
         updated = new.updated_at
         self.assertNotEqual(updated, created)
         self.assertGreater(updated, created)
+
 
 if __name__ == "__main__":
     unittest.main()

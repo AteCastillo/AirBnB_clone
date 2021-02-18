@@ -22,21 +22,20 @@ class TestAmenity(unittest.TestCase):
         self.assertIs(type(new), Amenity)
         self.assertTrue(hasattr(new, "id"))
         self.assertEqual(new.__str__(), "[{}] ({}) {}".format
-                                      (new.__class__.__name__,
-                                      new.id, new.__dict__))
+                                        (new.__class__.__name__,
+                                         new.id, new.__dict__))
         self.assertEqual(type(new.id), str)
         self.assertEqual(Amenity, type(Amenity()))
 
     def test_Amenity_init(self):
         new = Amenity(id="123", created_at="2021-02-17T22:46:38.883036",
-                        updated_at="2021-02-17T22:46:38.883036")
+                      updated_at="2021-02-17T22:46:38.883036")
         new2 = Amenity(id="123", name="Matias tu papi")
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
         self.assertEqual(new.id, "123")
         with self.assertRaises(TypeError):
             Amenity(id=None, created_at=None, updated_at=None)
-        
 
     def test_public_attr(self):
         """Test if the attributes are publics"""
@@ -90,6 +89,7 @@ class TestAmenity(unittest.TestCase):
         updated = new.updated_at
         self.assertNotEqual(updated, created)
         self.assertGreater(updated, created)
+
 
 if __name__ == "__main__":
     unittest.main()

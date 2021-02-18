@@ -41,7 +41,6 @@ class TestFileStorage(unittest.TestCase):
     def test_file_path(self):
         self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
-
     def test_new(self):
         '''Test new method'''
         new_file = FileStorage()
@@ -64,10 +63,14 @@ class TestFileStorage(unittest.TestCase):
         key = new_base.__class__.__name__ + "." + new_base.__dict__["id"]
         key_2 = new_city.__class__.__name__ + "." + new_city.__dict__["id"]
         key_user = new_user.__class__.__name__ + "." + new_user.__dict__["id"]
-        key_review = new_review.__class__.__name__ + "." + new_review.__dict__["id"]
-        key_place = new_place.__class__.__name__ + "." + new_place.__dict__["id"]
-        key_state = new_state.__class__.__name__ + "." + new_state.__dict__["id"]
-        key_amenity = new_amenity.__class__.__name__ + "." + new_amenity.__dict__["id"]
+        key_review = new_review.__class__.__name__ + \
+            "." + new_review.__dict__["id"]
+        key_place = new_place.__class__.__name__ + \
+            "." + new_place.__dict__["id"]
+        key_state = new_state.__class__.__name__ + \
+            "." + new_state.__dict__["id"]
+        key_amenity = new_amenity.__class__.__name__ + \
+            "." + new_amenity.__dict__["id"]
         self.assertIn(key, objs)
         self.assertIn(key_2, objs)
         self.assertIn(key_user, objs)

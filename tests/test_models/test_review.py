@@ -38,7 +38,6 @@ class TestReview(unittest.TestCase):
         with self.assertRaises(TypeError):
             Review(id=None, created_at=None, updated_at=None)
 
-
     def test_public_attr(self):
         """Test if the attributes are publics"""
         self.assertEqual(str, type(Review().id))

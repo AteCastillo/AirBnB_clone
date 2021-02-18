@@ -7,6 +7,7 @@ import pep8
 from datetime import datetime
 import models
 
+
 class TestState(unittest.TestCase):
     """Test of State class"""
 
@@ -26,10 +27,11 @@ class TestState(unittest.TestCase):
         self.assertEqual(type(new.id), str)
         self.assertEqual(State, type(State()))
         #
+
     def test_check_in_storage(self):
         """Check if the instance is in __objects"""
         self.assertIn(State(), models.storage.all().values())
-    
+
     def test_public_attr(self):
         """Test if the attributes are publics"""
         self.assertEqual(str, type(State().id))
@@ -37,11 +39,10 @@ class TestState(unittest.TestCase):
         self.assertEqual(datetime, type(State().updated_at))
         self.assertEqual(str, type(State.name))
 
-
     def test_State_init(self):
         """Test Init with Kwargs"""
         new = State(id="123", created_at="2021-02-17T22:46:38.883036",
-                        updated_at="2021-02-17T22:46:38.883036")
+                    updated_at="2021-02-17T22:46:38.883036")
         new2 = State(id="123", name="Matias tu papi")
         self.assertFalse(hasattr(new2, "created_at"))
         self.assertTrue(hasattr(new2, "name"))
