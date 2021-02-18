@@ -29,6 +29,7 @@ class BaseModel():
             self.id = str(uuid4())  # to generate unique id
             self.created_at = datetime.today()  # time created
             self.updated_at = datetime.today()  # time updated
+            # from init / FileStorage 
             models.storage.new(self)
 
     def __str__(self):

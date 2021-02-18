@@ -25,13 +25,13 @@ class FileStorage():
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         key = obj.__class__.__name__ + "." + obj.__dict__["id"]
+        # after creating an object, call new from BaseModel
+        # and this adds the new object to the __objects dictionary
         FileStorage.__objects[key] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         dict_obj = {}
-        # FileStorage.__objects = {"User.9324398432": "Puntero Al objeto"}
-        # dict_obj[User.9324398432] = {"__class__": User, ...}
         # saves and converts every object/dictionaries into string
         for key, val in FileStorage.__objects.items():
             dict_obj[key] = val.to_dict()

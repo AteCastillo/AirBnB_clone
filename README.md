@@ -2,7 +2,7 @@
 <h1 align ="center"> AIR BNB CLONE </h1><br>
 
 # AirBnb Clone Console
-A Command Interpreter to Manage AirBnb objects.
+A Command Interpreter to Manage AirBnb objects. This project implements the  console.
 
 ## Project Notes
 ### Environment
@@ -12,7 +12,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 ## How to use the Console
 ### To start:
 * Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
-*Non-interactive mode, `$ echo "help" | ./console.py`
+* Non-interactive mode, `$ echo "help" | ./console.py`
 ### To close:
 * Type either `EOF` or `quit`
 ### Command usage of Console:
@@ -34,6 +34,7 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
 * `update`
   * Usage: `update User 1234-5678-9101 email 2109@holbertonschool.com`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
+## Handle Errors in the Console
 ### Files
 ### `console.py`
 Module for Main Console
@@ -86,6 +87,18 @@ Module for serializing and deserializing instances and JSON
   * `def save(self)` : method to serialize __objects to JSON file
   * `def reload(self)` : method to deserialize the JSON to __objects
 ## Test Files : Unit Tests for respectively named files
+Unittests for the HolbertonBnB project are defined in the [tests](./tests) 
+folder. To run the entire test suite simultaneously, execute the following command:
+
+```
+$ python3 unittest -m discover tests
+```
+
+Alternatively, you can specify a single test file to run at a time:
+
+```
+$ python3 unittest -m tests/test_console.py
+```
 ### `test_amenity.py`
 ### `test_base_model.py`
 ### `test_city.py`
