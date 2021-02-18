@@ -115,14 +115,13 @@ Alternatively, you can specify a single test file to run at a time:
 ```
 $ python3 unittest -m tests/test_console.py
 ```
-### `test_amenity.py`
-### `test_base_model.py`
-### `test_city.py`
-### `test___init__.py`
-### `test_place.py`
-### `test_review.py`
-### `test_state.py`
-### `test_user.py`
+#### [Test Amenity](./tests/test_models/test_amenity.py)
+#### [Test BaseModel](./tests/test_models/test_base_model.py)
+#### [Test City](./tests/test_models/test_city.py)
+#### [Test Place](./tests/test_models/test_place.py)
+#### [Test Review](./tests/test_models/test_review.py)
+#### [Test State](./tests/test_models/test_state.py)
+#### [Test User](./tests/test_models/test_user.py)
 ## Authors
 * Atenea Castillo, <a href='https://github.com/AteCastillo'>Github</a>
 * Gianluca Dorelo, <a href='https://github.com/gdorelo'>Github</a>
