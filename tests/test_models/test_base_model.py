@@ -42,7 +42,7 @@ class TestBaseModel(unittest.TestCase):
     def test_attr(self):
         """Test Attributes of the instance"""
         new = BaseModel()
-        new.name = "Matias Tu Papi"
+        new.name = "say what"
         self.assertTrue(hasattr(new, "id"))
         self.assertTrue(hasattr(new, "created_at"))
         self.assertTrue(hasattr(new, "updated_at"))
