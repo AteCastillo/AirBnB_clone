@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Console File to handle objects, with filestorage 
+"""Console File to handle objects, with filestorage
 they are converted (serialized and deserialized)"""
 import cmd
 import json
