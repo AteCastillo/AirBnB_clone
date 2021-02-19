@@ -13,7 +13,7 @@ from models.review import Review
 class FileStorage():
     """FileStorage class documentation"""
     __file_path = "file.json"
-    # a dictionary of objects:
+    # a dictionary that contains a key with the name of the class.id and value is a pointer to objects:
     __objects = {}  # save all instances of all objects, a pointer to an object
     # receives text format, converts it into dicts
     # json file will contain objects/instances based on the dict __objects
@@ -53,18 +53,29 @@ class FileStorage():
         '''
         # this is the first thing that happens
         # reads a file that has a string, convert it into a dict/object
+        # the dictionary objects has dicts inside
+        # dict to compare:
         classes = {'BaseModel': BaseModel, 'User': User,
                    'State': State, 'City': City, 'Amenity': Amenity,
                    'Place': Place, 'Review': Review}
         f = FileStorage.__objects
         try:
+            # opening file.json
             with open('{}'.format(FileStorage.__file_path), 'r') as File:
-                objects = json.load(File)
-                for key in objects:
-                    f[key] = classes[objects[key]['__class__']](**objects[key])
-                # Objects[key] = User.9324398432
-                # Objects[key]['__class__'] = "User"
-                # classes["User"](**objects[User.9324398432])
-                # User(**object[User.9324398432])
+                # file.json converted to a dict "elems" that has dictionaries:
+                elems = json.load(File)
+                # the value of the key is a dictionary
+                for key in elems:
+                    # converts the key in an instance
+                    # to every key in elems add an instance with the same key in f:
+                    f[key] = classes[elems[key]['__class__']](**elems[key])
+                    # for review:
+                # elems[key] = Review.9324398432
+                # elems[key]['__class__'] = "Review"
+                # classes["Review"](**elems[User.9324398432])
+                # adds to __objects[key] an instance wich is an object from kwargs:
+                # ** converts one dict "elems[key]" in kwargs:
+                # __objects[key] = Review(**elems[Review.9324398432])
+                # Review(**elems[Review.9324398432])
         except:
             pass

@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""Console File to handle objects, with filestorage
-they are converted (serialized and deserialized)"""
+"""Console File"""
 import cmd
 import json
 from models import storage
@@ -35,13 +34,14 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Creates a new instance of BaseModel, saves it (to the JSON file)"""
-        if line is None or line == "":
+        if len(line) == 0 or line == "":
             print("** class name missing **")
         elif line in HBNBCommand.class_list:
-            klass = globals()[line]
+            """klass = globals()[line]
             new_inst = klass()
-            new_inst.save()
-            print(new_inst.id)
+            new_inst.save()"""
+            print(eval(line)().id)
+            storage.save()
         else:
             print("** class doesn't exist **")
 
@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
         objs = storage.all()
         if len(arg) == 0:
             for val in objs.values():
-                new_list.append(str(val))
+                new_list.append(val.__str__())
             print(new_list)
         elif arg[0] in HBNBCommand.class_list:
             for class_key in objs:
@@ -148,27 +148,40 @@ class HBNBCommand(cmd.Cmd):
             print(count)
 
     def default(self, line):
-            """In case to not found the command this func is executed"""
-            functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
-            functions_parameters = {"show": HBNBCommand.do_show, "destroy":
-                                    HBNBCommand.do_show}
-            try:
-                args = line.split(".")
-                name_func = ""
-                func_id = ""
-                for index, letter in enumerate(args[1]):
-                    if letter == "(":
-                        name_func = args[1][0:index]
-                        break
-                if name_func in functions:
-                    functions[name_func](self, args[0])
-                elif name_func in functions_parameters:
-                    line = args[0] + " " + args[1][index + 2: -2]
-                    functions_parameters[name_func](self, line)
-                else:
-                    print("*** Unknown syntax: {}".format(line))
-            except:
+        """In case to not found the command this func is executed"""
+        functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
+        functions_parameters = {"show": HBNBCommand.do_show,
+                                "destroy": HBNBCommand.do_destroy}
+        try:
+            args = line.split(".")
+            name_func = ""
+            func_id = ""
+            for index, letter in enumerate(args[1]):
+                if letter == "(":
+                    name_func = args[1][0:index]
+                    break
+            if name_func in functions:
+                functions[name_func](self, args[0])
+            elif name_func in functions_parameters:
+                line = args[0] + " " + args[1][index + 2:-2]
+                functions_parameters[name_func](self, line)
+            elif name_func == "update":
+                parse = ""
+                line = args[1][index + 1:-1]
+                for letter in line:
+                    if letter != '"' and letter != "'":
+                        parse += letter
+                parse = parse.split(",")
+                line = args[0] + " "
+                for elem in parse:
+                    elem.strip(" ")
+                    line += elem + " "
+                HBNBCommand.do_update(self, line)
+            else:
                 print("*** Unknown syntax: {}".format(line))
+        except:
+            print("*** Unknown syntax: {}".format(line))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

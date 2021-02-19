@@ -40,6 +40,8 @@ All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-
   * Usage: `update User 1234-5678-9101 email 2109@holbertonschool.com`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
 ## Handle Errors in the Console
+
+
 ### Files
 
 ### [Console](./console.py)
