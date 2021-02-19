@@ -13,7 +13,8 @@ from models.review import Review
 class FileStorage():
     """FileStorage class documentation"""
     __file_path = "file.json"
-    # a dictionary that contains a key with the name of the class.id and value is a pointer to objects:
+    # a dictionary that contains a key with the name
+    # of the class.id and value is a pointer to objects:
     __objects = {}  # save all instances of all objects, a pointer to an object
     # receives text format, converts it into dicts
     # json file will contain objects/instances based on the dict __objects
@@ -67,13 +68,15 @@ class FileStorage():
                 # the value of the key is a dictionary
                 for key in elems:
                     # converts the key in an instance
-                    # to every key in elems add an instance with the same key in f:
+                    # to every key in elems add an instance
+                    # with the same key in f:
                     f[key] = classes[elems[key]['__class__']](**elems[key])
                     # for review:
                 # elems[key] = Review.9324398432
                 # elems[key]['__class__'] = "Review"
                 # classes["Review"](**elems[User.9324398432])
-                # adds to __objects[key] an instance wich is an object from kwargs:
+                # adds to __objects[key] an instance wich
+                # is an object from kwargs:
                 # ** converts one dict "elems[key]" in kwargs:
                 # __objects[key] = Review(**elems[Review.9324398432])
                 # Review(**elems[Review.9324398432])
