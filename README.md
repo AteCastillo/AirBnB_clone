@@ -1,8 +1,8 @@
 ![](https://camo.githubusercontent.com/9ebbf60e208b031d4dcf7db6ffc19fe0339d0ff3/68747470733a2f2f692e6962622e636f2f64354e38354e682f68626e622e706e67)
-<h1 align ="center"> AIR BNB CLONE </h1><br>
+<h1 align ="center"> AirBnb CLONE </h1><br>
 
-# AirBnb Clone Console
-A Command Interpreter to Manage AirBnb objects. This project implements the  console.
+# The Console
+A Command Interpreter to Manage AirBnb objects. This project implements the console.
 
 ## Project Notes
 
@@ -12,48 +12,81 @@ Files interpreted/run on Ubuntu 14.04 LTS with Python 3
 ### Style
 All code is written in accordance with Pep8 https://www.python.org/dev/peps/pep-0008/
 
-## How to use the Console
-
-### To start:
+## Using the Console
+### Starting:
 * Interactive mode, `$ ./console.py`, and you will prompted with `(hbnb)`
 * Non-interactive mode, `$ echo "help" | ./console.py`
-### To close:
+### Closing:
 * Type either `EOF` or `quit`
 
-### Command usage of Console:
+### Commands:
 * `help`
   * Usage: `help`
   * Documentation/help provided
+
+Example
+  
+  ```
+  $ ./console.py
+  hbnb) help 
+
+  Documented commands (type help <topic>):
+  ========================================
+  EOF  all  create  destroy  help  quit  show  update
+  ```
+
 * `create`
   * Usage: `create BaseModel`
   * Creates a new instance of a class, saves it (to the JSON file) and prints the `id`
 * `show`
-  * Usage: `show BaseModel 1234-5847-3912`
+  * Usage: `show BaseModel 1234-re45`
   * Prints the string representation of an instance based on the class name and `id`
 * `destroy`
-  * Usage: `destroy BaseModel 1234-5847-3912`
+  * Usage: `destroy BaseModel 1234-re45`
   * Deletes an instance based on the class name and `id` (save the change into the JSON file). 
 * `all`
   * Usage: `all`
   * Prints all string representation of all instances based or not on the class name.
 * `update`
-  * Usage: `update User 1234-5678-9101 email 2109@holbertonschool.com`
+  * Usage: `update User 1234-re45 email 2235@holbertonschool.com`
   * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
-## Handle Errors in the Console
 
+## Handle Errors in the Console
+When an error occurs, the console will handle it and shows a corresponding message
+
+* `create Errors`
+  * Usage: `create <Class Name>`
+  * Example: `create User`
+  * Creates a new instance of a class, saves it (to the JSON file) and prints the `id`
+* `show`
+  * Usage: `show <Class Name> <ID Instance>`
+  * Example: `show User 1234-re45`
+  * Prints the string representation of an instance based on the class name and `id`
+* `destroy`
+  * Usage: `destroy <Class Name> <ID Instance>`
+  * Example: `destroy User 1234-re45`
+  * Deletes an instance based on the class name and `id` (save the change into the JSON file). 
+* `all`
+  * Usage: `all`
+  * Example: `User all`
+  * Prints all string representation of all instances based or not on the class name.
+* `update`
+  * Usage: `update <Class Name> <Id Instance> <Attribute Name> <Value>`
+  * Example: `update User 1234-re45 Name "Atenea tu mami"`
+  * Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file)
 
 ### Files
 
 ### [Console](./console.py)
 Module for Main Console
 * `class HBNBCommand(cmd.Cmd)` includes:
-  * `def emptyline(self)` : method to handle empty line 
+  * `def emptyline(self)` : method to handle empty lines 
   * `def do_quit(self, line)` : quit command method to exit console
   * `def do_create(self, arg)` : method to make new instance, saves it, and print id
   * `def do_show(self, arg)` : method to print string representation of an instance based on class name/id
   * `def do_destroy(self, arg)` : method to deletes instance based on class name/id
   * `def do_all(self, arg)` : prints string representation of all instances or all instances of a class
-  * ` def do_update(self, arg)` : method to update instance based on class name/id by adding/updating attribute
+  * `def do_update(self, arg)` : method to update instance based on class name/id by adding/updating attribute
 
 ### [Base Model](./models/base_model.py)
 Module for Base Model
@@ -124,6 +157,7 @@ $ python3 unittest -m tests/test_console.py
 #### [Test Review](./tests/test_models/test_review.py)
 #### [Test State](./tests/test_models/test_state.py)
 #### [Test User](./tests/test_models/test_user.py)
+
 ## Authors
 * Atenea Castillo, <a href='https://github.com/AteCastillo'>Github</a>
 * Gianluca Dorelo, <a href='https://github.com/gdorelo'>Github</a>
