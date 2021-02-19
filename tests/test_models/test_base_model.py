@@ -71,6 +71,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(len(new.__str__()))
 
     def test_to_dict(self):
+        """ Tests to_dict method """
         new = BaseModel()
         dict_new = new.to_dict()
         self.assertNotEqual(new.__dict__, new.to_dict())
@@ -80,6 +81,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(dict_new["__class__"], "BaseModel")
 
     def test_save(self):
+        """Tests for save function"""
         new = BaseModel()
         created = new.updated_at
         new.save()
