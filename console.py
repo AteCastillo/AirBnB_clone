@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Console File"""
+"""Console File to handle objects"""
 import cmd
 import json
 from models import storage
@@ -17,6 +17,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     class_list = ["BaseModel", "User", "City", "State", "Amenity",
                   "Place", "Review"]
+    # Non changeable atributes:
     attr_list = ["updated_at", "created_at", "id"]
 
     def do_quit(self, line):
@@ -40,7 +41,9 @@ class HBNBCommand(cmd.Cmd):
             """klass = globals()[line]
             new_inst = klass()
             new_inst.save()"""
+            # to evaluate an expression dinamically, converts the line into a class
             print(eval(line)().id)
+            # to serialize:
             storage.save()
         else:
             print("** class doesn't exist **")
@@ -48,11 +51,13 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, line):
         """Prints the string representation of an instance
         based on the class name and id"""
+        # all returns __objects dict
         objs = storage.all()
         if not line or len(line) == 0:
             print('** class name missing **')
         else:
             arg = line.split()
+            # args starts in class name [0]
             if not arg[0] in HBNBCommand.class_list:
                 print("** class doesn't exist **")
             elif len(arg) == 1:
@@ -126,10 +131,13 @@ class HBNBCommand(cmd.Cmd):
                 key = args[0] + "." + args[1]
                 if key in objs:
                     if args[2] not in HBNBCommand.attr_list:
+                        # arg[3][-1] is the last character of the string
                         if args[3][0] in scape and args[3][-1] in scape:
+                            # arg [3] goes from 1 to menus 1, without ""
                             setattr(objs[key], args[2], str(args[3][1:-1]))
                         else:
                             setattr(objs[key], args[2], str(args[3]))
+                            # saves in file
                         storage.save()
                 else:
                     print("** no instance found **")
@@ -148,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
             print(count)
 
     def default(self, line):
-        """In case to not found the command this func is executed"""
+        """In case to not found any command this func is executed"""
         functions = {"all": HBNBCommand.do_all, "count": HBNBCommand.count}
         functions_parameters = {"show": HBNBCommand.do_show,
                                 "destroy": HBNBCommand.do_destroy}
@@ -156,20 +164,28 @@ class HBNBCommand(cmd.Cmd):
             args = line.split(".")
             name_func = ""
             func_id = ""
+            # enumerate returns letter by letter and puts and index
             for index, letter in enumerate(args[1]):
                 if letter == "(":
+                    # ex: user.show takes only show
                     name_func = args[1][0:index]
                     break
+            # now I have name function
             if name_func in functions:
+                # calls do_all or do_count and pass args [0] which is the class
                 functions[name_func](self, args[0])
             elif name_func in functions_parameters:
+                # args[0] is class, args[1] is id +2 to saltear paréntesis and comillas,
+                # same for -2
                 line = args[0] + " " + args[1][index + 2:-2]
+                # line is gonna be: user id
                 functions_parameters[name_func](self, line)
             elif name_func == "update":
                 parse = ""
                 line = args[1][index + 1:-1]
                 for letter in line:
                     if letter != '"' and letter != "'":
+                    # ya no tiene comillas
                         parse += letter
                 parse = parse.split(",")
                 line = args[0] + " "

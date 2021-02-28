@@ -42,7 +42,7 @@ class FileStorage():
         dict_obj = {}
         # saves and converts every object/dictionaries into string
         for key, val in FileStorage.__objects.items():
-            # the value of the key it has a pointer to the object
+            # the value of the key has a pointer to the object
             # same key with value from to_dict method:
             dict_obj[key] = val.to_dict()  # it has all data from the object
         with open(FileStorage.__file_path, mode="w") as f:
@@ -67,7 +67,7 @@ class FileStorage():
                 elems = json.load(File)
                 # the value of the key is a dictionary
                 for key in elems:
-                    # converts the key in an instance
+                    # converts the key in an instance and send to __objects
                     # to every key in elems add an instance
                     # with the same key in f:
                     f[key] = classes[elems[key]['__class__']](**elems[key])
