@@ -83,7 +83,7 @@ article .header{
     display: block;
     width: 100%;
     height: 80%;
-    background-image: url(../images/icon_bath.png);
+    background-image: url(../images/icon_1.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -101,7 +101,7 @@ article .header{
     display: block;
     width: 100%;
     height: 80%;
-    background-image: url(../images/icon_bed.png);
+    background-image: url(../images/icon_2.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -120,7 +120,7 @@ article .header{
     display: block;
     width: 100%;
     height: 80%;
-    background-image: url(../images/icon_group.png);
+    background-image: url(../images/icon_3.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
